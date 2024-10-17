@@ -1,18 +1,18 @@
 const request = require('supertest');
 const app = require('../app');
 
-//1 Test to check if all products are returned.
-describe('GET /products', () => {
-    it('should return all products', async () => {
-      const res = await request(app).get('/products');
-      expect(res.statusCode).toBe(200);
-      expect(res.body.length).toBe(2); // Assuming there are 2 initial products
-      expect(res.body[0].name).toBe('Laptop');
+    // ทดสอบ GET /products
+    describe('GET /products', () => {
+        it('should return all products', async () => {
+        const res = await request(app).get('/products');
+        expect(res.statusCode).toBe(200);
+        expect(res.body.length).toBe(2); // Assuming there are 2 initial products
+        expect(res.body[0].name).toBe('Laptop');
+        });
     });
-  });
 
 
-  //2 Test to get a specific product by ID, and handle the 404 case.
+  // ทดสอบ GET /products/:id
   describe('GET /products/:id', () => {
     it('should return a product by ID', async () => {
       const res = await request(app).get('/products/1');
@@ -27,7 +27,7 @@ describe('GET /products', () => {
     });
   });
 
-  //3 Test to add a new product.
+  // ทดสอบ POST /products
   describe('POST /products', () => {
     it('should add a new product', async () => {
       const newProduct = { name: 'Tablet', price: 400, stock: 15 };
@@ -40,7 +40,7 @@ describe('GET /products', () => {
     });
   });
   
-  //4 Test to update an existing product and handle the 404 case for a non-existent product.
+  // ทดสอบ PUT /products/:id
   describe('PUT /products/:id', () => {
     it('should update an existing product', async () => {
       const updatedProduct = { name: 'Gaming Laptop', price: 1200, stock: 4 };
@@ -61,7 +61,7 @@ describe('GET /products', () => {
     });
   });
 
-  //5 Test to delete a product and handle the 404 case for a non-existent product.
+  // ทดสอบ DELETE /products/:id
   describe('DELETE /products/:id', () => {
     it('should delete a product', async () => {
       const res = await request(app).delete('/products/1');
