@@ -3,7 +3,7 @@
     "express": "^4.21.1"
   },
   "scripts": {
-    "test": "jest --coverage > __test__/test_report.txt" 
+    "test": "jest --coverage > __tests__/test_report.txt" 
   },
   "devDependencies": {
     "jest": "^29.7.0",
